@@ -1,7 +1,7 @@
-# Your name
+# Eyasu Lemma
 ## CS50 Winter 2020, Tiny Search Engine
 
-GitHub username:
+GitHub username: eyasumecha
 
 To build, run `make`.
 
