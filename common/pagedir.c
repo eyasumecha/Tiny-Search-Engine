@@ -31,10 +31,15 @@ int pagescanner(webpage_t *page, bag_t *bag, hashtable_t *hash){
                 webpage_t *new = webpage_new(url, webpage_getDepth(page) + 1, NULL);
                 if(new == NULL){
                     fprintf(stderr, "error in creating new page\n");
+
                     return 1;
                 }
                 bag_insert(bag, new);
                 }
+                else{
+                    free(url);
+                }
+                
         }
         else{
         free(url);
