@@ -1,10 +1,11 @@
 #variables
+
 L = ../libcs50
+LIB = common.a
 
 CC = gcc
 CFLAGS = -Wall -pedantic -std=c11 -ggdb -I $L 
-OBJS = pagedir.o 
-LIB = common.a
+OBJS = pagedir.o index.o word.o
 LLIBS = $L/libcs50-given.a
 MAKE = MAKE
 
@@ -14,6 +15,13 @@ $(LIB): $(OBJS)
 
 pagedir.o: pagedir.h $(LLIBS)
 pagedir.h: $(LLIBS)
+
+index.o: index.h word.h $(LLIBS)
+index.h: word.h $(LLIBS)
+
+word.o: word.h 
+
+
 #phony Targets
 .PHONY: clean
 

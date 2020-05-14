@@ -25,7 +25,7 @@ bool pagefetcher(webpage_t *page){
 int pagescanner(webpage_t *page, bag_t *bag, hashtable_t *hash){
     int pos = 0;
     char *url;
-    while(((url = webpage_getNextURL(page, &pos)) != NULL)){
+    while((url = webpage_getNextURL(page, &pos)) != NULL){
         if(NormalizeURL(url) && IsInternalURL(url)){
             if(hashtable_insert(hash, url, "")){
                 webpage_t *new = webpage_new(url, webpage_getDepth(page) + 1, NULL);
@@ -35,17 +35,8 @@ int pagescanner(webpage_t *page, bag_t *bag, hashtable_t *hash){
                     return 1;
                 }
                 bag_insert(bag, new);
-                }
-                else{
-                    free(url);
-                }
-                
+            }   
         }
-        else{
-        free(url);
-        }
-            
-    
     }
     return 0;
 }
